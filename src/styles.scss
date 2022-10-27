@@ -1,0 +1,198 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  height: 100vh;
+  background: url("./assets/bgg.jpg") center;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-bottom: 1px solid #999;
+    width: calc(100vw - 30px);
+    background: #f0f2e3;
+
+    .logo {
+      color: #e74c3c;
+      font-weight: 300;
+      font-size: 26px;
+      line-height: 0.65;
+      font-family: 'Lobster', cursive;
+    }
+  }
+
+  .dice-container {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+    place-items: center;
+    place-content: center;
+    height: 50vh;
+
+    &.not-allowed {
+      pointer-events: none;
+      filter: brightness(0.9);
+    }
+
+    .dice {
+      display: flex;
+      width: 75px;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background-color: #f5f5f5;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid #cacaca;
+      cursor: pointer;
+      height: fit-content;
+
+      &:hover {
+        background-color: #bf6e1d47;
+        border-color: #fff;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      &-label {
+        color: #666;
+      }
+
+      &-value {
+        color: #444444;
+      }
+    }
+  }
+
+  button {
+    padding: 8px 10px;
+    border-radius: 5px;
+    color: #555;
+    font-size: 14px;
+    cursor: pointer;
+    border: 2px solid #d87c1f;
+    background-color: #fff;
+    font-weight: 700;
+
+    &.primary {
+      background-color: #f18f2d;
+      color: #fff;
+
+      &.game {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        text-transform: uppercase;
+        border-radius: 50px;
+        gap: 10px;
+
+        &:before {
+          content: '-';
+          display: block;
+          width: 14px;
+          height: 14px;
+          border: 2px solid #fff;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    &:hover {
+      background-color: #f18f2d;
+      color: #fff;
+
+      &.game:before {
+        transform: rotate(-45deg);
+        transition: all 0.4s ease-in-out;
+      }
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .scores-container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    gap: 10px;
+    padding: 0 10px;
+    min-width: 600px;
+    height: 130px;
+    border-radius: 10px;
+    box-shadow: #f18f2d45 0px 6px 12px -2px, rgb(0 0 0 / 21%) 0px 3px 7px -3px;
+    background-color: #f0f2e3;
+
+    p, h3 {
+      margin: 0;
+    }
+
+    span {
+      margin: 0 16px;
+    }
+
+    .result {
+      &-won {
+        color: #51d35c;
+      }
+
+      &-lost {
+        color: #e46f6f;
+      }
+    }
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .game-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      width: calc(100vh - 100px);
+      padding: 14px 20px;
+      background-color: #456;
+      border: 1px solid #b2b2b2;
+      border-radius: 30px 30px 0 0;
+      color: #fff;
+      font-weight: 800;
+
+      h4 {
+        margin: 0;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .App {
+    .scores-container {
+      min-width: 300px;
+      height: 80px;
+    }
+
+    .game-actions {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
